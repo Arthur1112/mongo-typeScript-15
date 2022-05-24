@@ -1,5 +1,5 @@
 import { ObjectId } from 'mongodb';
-import { getDb } from './db.js';
+import { getDatabase } from './db.js';
 
 interface Character {
   name: string;
@@ -7,7 +7,7 @@ interface Character {
 }
 
 const getCollection = async () => {
-  const db = await getDb();
+  const db = await getDatabase();
   return db.collection<Character>('characters');
 };
 

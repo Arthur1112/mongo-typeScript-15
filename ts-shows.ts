@@ -1,13 +1,15 @@
 import { ObjectId } from 'mongodb';
-import { getDb } from './db.js';
+import { getDatabase } from './db.js';
 
 interface TvShow {
   name: string;
-  paltformIds: ObjectId[]; //define an array of strings
+  paltformIds: string[]; //define an array of strings
+  genre: string;
+  maturityRating: 'G' | 'PG' | 'PG-13' | 'R' | 'NC-17';
 }
 
 const getCollection = async () => {
-  const db = await getDb();
+  const db = await getDatabase();
   return db.collection<TvShow>('tv-shows');
 };
 
